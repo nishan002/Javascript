@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal using JS</title>
+    <style>
+        .modal {
+            padding-top: 0;
+            position: fixed;
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            pointer-events: none;
+            transition: all .5s ease;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            height: 200px;
+            transform: translate(0, -71vh);
+            transition: all .5s ease;
+
+        }
+
+        .modal-active{
+            pointer-events: auto;
+            background-color: rgba(0,0,0, 0.4) !important;
+        }
+
+        .modal-content-active{
+            transform: translate(0, 30vh) !important;
+            z-index: 233;
+        }
+
+        .modal-header {
+            text-align: center;
+            border-bottom: 4px solid #cccccc;
+        }
+
+        h1 {
+            display: inline-block;
+        }
+        button.close {
+            float: right;
+            cursor: pointer;
+        }
+
+        button.close:hover,
+        button.close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .modal-body {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="button">Click me</button>
+    <div id="mymodal" class="modal" class="container">
+        <div id="mymodal-content" class="modal-content">
+            <div class="modal-header">
+                <h1>Thank you for clicking here..!</h1>
+                <button id="close" class="close">x</button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit doloremque modi officiis quisquam, libero adipisci similique quam ex veritatis, magni esse delectus obcaecati minus consequuntur rerum accusamus ut hic ullam cum iste nemo vel incidunt. Eaque voluptatum provident, non rem eveniet deserunt exercitationem quam qui.</p>
+            </div>
+        </div>
+    </div>
+    <div class=""><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti veniam quam sapiente dicta adipisci id iusto odio sit fugit, hic nihil consectetur consequuntur perferendis. Possimus aut cum velit quibusdam voluptates id natus!</p></div>
+    <script src="main.js"></script>
+</body>
+</html>

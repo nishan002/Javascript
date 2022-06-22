@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css?v=1">
+    <title>Spider Game</title>
+</head>
+<body>
+    <div id="game-bg">
+        <div class="spider-logo">
+            <img id="spider" src="images/icon.png" alt="">
+        </div>
+        <div class="food-logo">
+            <img id="food" src="images/cherry.png" alt="">
+        </div>
+
+        <!-- game sidebar -->
+        <div class="sidebar">
+            <div id="stopwatch">
+                <div class="timer">
+                    <span id="minutes">02</span> 
+                    <span>:</span> 
+                    <span id="seconds">00</span>
+                </div>
+            </div>
+            <div class="score">
+                <h4>Your Score: <span id="score_show"> </span> </h4>
+            </div>
+            <div class="high-score">
+                <h4>High Score: <span id="high_score_show"> </span> </h4>
+            </div>
+        </div>
+        <!-- modal show after finishing the game -->
+        <div id="mymodal" class="modal" class="container">
+            <div id="mymodal-content" class="modal-content">
+                <div class="modal-body">
+                    <center>
+                        <h1 id="congo&over"></h1>
+                        <div class="score">
+                            <h4>Your Score: <span id="modal_score"></span> </h4>
+                        </div>
+                        <div class="high-score">
+                            <h4>High Score: <span id="modal_high_score"></span> </h4>
+                        </div>
+                        <div class="high-score">
+                            <h4 id="congo-message"></h4>
+                        </div>
+                        <button id="restart">Restart</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!-- modal show after finishing the game -->
+    </div>
+
+    <script src="js/main.js"></script>
+    <!-- <script src="js/modal.js"></script> -->
+</body>
+</html>

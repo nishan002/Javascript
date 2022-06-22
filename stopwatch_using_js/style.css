@@ -5,7 +5,7 @@
 }
 
 
-#mainstopwatch {
+#stopwatch {
     height: 170px;
     width: 300px;
     background: aquamarine;
@@ -13,7 +13,7 @@
     padding: 20px;
   }
 
-#mainstopwatch span {
+#stopwatch span {
     background: #c7e0f8 !important;
     color: #0776de;
     padding: 10px;
@@ -24,7 +24,7 @@
     box-shadow: 7px 6px 5px -6px black;
 }
 
-#mainstopwatch button {
+#stopwatch button {
     height: 30px;
     width: 64px;
     margin: 5px;
@@ -35,6 +35,6 @@
     border-radius: 30px;
 }
 
-#mainstopwatch button:hover{
+#stopwatch button:hover{
     box-shadow: 3px 3px 5px 1px black;
 }

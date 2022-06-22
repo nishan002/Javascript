@@ -1,0 +1,217 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: gameOver;
+    src: url(fonts/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+
+html, body {
+    font-family: 'gameOver';
+}
+
+#game-bg{
+    background: url(images/game-bg.jpg);
+    background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+    position: relative;
+    z-index: 0;
+}
+
+#game-bg:before{
+    content: '';
+    position: absolute;
+    background-color: black;
+    opacity: .5;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.spider-logo{
+    height: 80px;
+    width: 65px;
+}
+
+.spider-logo img {
+    height: 80px;
+}
+
+.food-logo{
+    height: 60px;
+    width: 60px;
+    position: absolute;
+}
+
+.food-logo #food{
+    height: 50px;
+    transition: opacity 0.5s;
+    position: absolute;
+}
+
+.sidebar{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 0;
+    right: 0;
+}
+
+
+/*======================================================================================================
+ Stop Watch  Style
+=======================================================================================================*/
+
+#stopwatch {
+    height: 80px;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 20px 0 0 0;
+    border-radius: 10px;
+    top: 5px;
+    right: 15px;
+    display: block;
+}
+
+.timer {
+    padding: 10px 15px;
+}
+
+
+#stopwatch span {
+    color: #dddddd;
+    margin: 3px;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#stopwatch button {
+    height: 30px;
+    width: 64px;
+    margin: 5px;
+    cursor: pointer;
+    background: #2E80B3;
+    border: none;
+    color: white;
+    border-radius: 30px;
+}
+
+#stopwatch button:hover{
+    box-shadow: 3px 3px 5px 1px black;
+}
+
+.high-score {
+    margin: 15px 0;
+}
+.score {
+    margin: 0px 0;
+}
+
+.sidebar h4, #score_show {
+    color: white;
+    font-size: 18px;
+}
+
+/*======================================================================================================
+Modal  Style
+=======================================================================================================*/
+
+.modal {
+    padding-top: 0;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+.modal-content {
+    background: url(images/gameover.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: auto;
+    padding: 20px;
+    border: none;
+    width: 37%;
+    height: 270px;
+    transform: translate(0, -87vh);
+    transition: all .5s ease;
+    border-radius: 20px;
+    transition: all .5s ease;
+
+}
+
+
+
+.modal-active{
+    pointer-events: auto;
+    background-color: rgba(0,0,0, 0.4) !important;
+}
+
+.modal-content-active{
+    transform: translate(0, 22vh) !important;
+    z-index: 233;
+}
+
+
+button.close {
+    float: right;
+    cursor: pointer;
+}
+
+button.close:hover,
+button.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.modal-body {
+    text-align: justify;
+    color: white;
+}
+
+.modal-body h1 {
+    color: #fc0818;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 30px;
+}
+
+#restart {
+    height: 38px;
+    width: 110px;
+    border: none;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    background: #c91622;
+    cursor: pointer;
+    font-family: 'gameOver';
+    text-transform: uppercase;
+    margin: 10px;
+}
+
+@media screen and (max-height: 500px) and (max-width: 850px) {
+    .modal-body h1{
+        font-size: 20px;
+    }
+    .modal-content{
+        font-size: 9px;
+    }
+}

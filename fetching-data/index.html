@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <title>API Fetching</title>
+    <style>
+        .card-body {
+            color: white;
+            background: linear-gradient(90deg, rgba(88,73,162,1) 38%, rgba(241,92,92,1) 100%);
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            height: 320px;
+            width: 335px;
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .card-title a {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Add Data
+            </button>
+            <button type="button" class="btn btn-primary" id="fetchData">
+                Fetch Data
+            </button>
+        
+        <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content text-center">
+                        
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>ADD POST</h2>
+                <form method="post" id="addPostForm" class="form">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <input type="text" class="form-control" id="body">
+                    </div>
+                    <div class="form-group">
+                        <label for="user_id">User ID</label>
+                        <input type="text" class="form-control" id="user_id">
+                    </div>
+                    <input type="hidden" id="hiddenId" name="edit_id" value="1">
+                    <button type="submit" class="btn btn-primary" onclick="addPost(event)">Submit</button>
+                </form>
+            </div>
+            <!-- <div class="col-md-6">
+                <h2>Edit POST</h2>
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="editTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <input type="text" class="form-control" id="editBody">
+                    </div>
+                    <div class="form-group">
+                        <label for="user_id">User ID</label>
+                        <input type="text" class="form-control" id="edit_user_id">
+                    </div>
+                    <input type="hidden" id="hiddenId" name="custId" value="1">
+                    <button type="submit" class="btn btn-primary" id="editSubmit">Submit</button>
+                </form>
+            </div> -->
+        </div>
+    </div>
+    <br>
+   
+    <div class="container">
+        <div class="row posts-list">
+            
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" ></script>
+   
+    <script type = "text/javascript" src="main.js"></script>
+</body>
+</html>

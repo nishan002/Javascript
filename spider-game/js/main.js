@@ -67,7 +67,7 @@ window.addEventListener('keydown', (event) => {
 function moveLeft() {
     left = parseInt(spider.style.left);
     if(left >= 5){
-        spider.style.left = parseInt(spider.style.left) - 7 + "px";
+        spider.style.left = parseInt(spider.style.left) - 9 + "px";
     }
     spider.style.transform = 'rotate(-90deg)';
 }
@@ -77,7 +77,7 @@ function moveUp() {
     tops = parseInt(spider.style.top);
     
     if(tops >= 5){
-        spider.style.top = parseInt(spider.style.top) - 7 + "px";
+        spider.style.top = parseInt(spider.style.top) - 9 + "px";
     }
     spider.style.transform = 'rotate(360deg)';
 }
@@ -87,7 +87,7 @@ function moveRight() {
     right = parseInt(spider.style.left);
 
     if(right <= window.innerWidth - 90){
-        spider.style.left = parseInt(spider.style.left) + 7 + "px";
+        spider.style.left = parseInt(spider.style.left) + 9 + "px";
     }
     
     spider.style.transform = 'rotate(90deg)';
@@ -98,7 +98,7 @@ function moveDown() {
     down = parseInt(spider.style.top);
 
     if(down <= window.innerHeight - 90){
-        spider.style.top = parseInt(spider.style.top) + 7 + "px";
+        spider.style.top = parseInt(spider.style.top) + 9 + "px";
     }
     
     spider.style.transform = 'rotate(180deg)';

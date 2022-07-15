@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+	<meta name="generator" content="Hugo 0.88.1">
+	<title>Validation Form</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css?v=1">
+	<!-- ================ select 2 ================= -->
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	
+
+	<!-- Bootstrap core CSS -->
+
+	<style>
+	.bd-placeholder-img {
+		font-size: 1.125rem;
+		text-anchor: middle;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+	}
+
+	@media (min-width: 768px) {
+		.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+		}
+	}
+	</style>
+</head>
+<body>
+	
+	<div class="d-flex align-items-start">
+		<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+			<button class="nav-link active" id="v-pills-ps-type-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ps-type" type="button" role="tab" aria-controls="v-pills-ps-type" aria-selected="true">Passport Type</button>
+
+			<button class="nav-link disabled" id="v-pills-ps-i-tab" data-bs-toggle="pill" data-bs-target="#v-pills-ps-i" type="button" role="tab" aria-controls="v-pills-ps-i" aria-selected="false">Personal Information</button>
+
+			<button class="nav-link disabled" id="v-pills-address-tab" data-bs-toggle="pill" data-bs-target="#v-pills-address" type="button" role="tab" aria-controls="v-pills-address" aria-selected="false">Address</button>
+
+			<button class="nav-link disabled" id="v-pills-id-doc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-id-doc" type="button" role="tab" aria-controls="v-pills-id-doc" aria-selected="false">ID Documents</button>
+
+			<button class="nav-link disabled" id="v-pills-p-i-tab" data-bs-toggle="pill" data-bs-target="#v-pills-p-i" type="button" role="tab" aria-controls="v-pills-p-i" aria-selected="false">Parental Information</button>
+
+			<button class="nav-link disabled" id="v-pills-s-i-tab" data-bs-toggle="pill" data-bs-target="#v-pills-s-i" type="button" role="tab" aria-controls="v-pills-s-i" aria-selected="false">Spouse Information</button>
+
+			<button class="nav-link disabled" id="v-pills-emerge-contact-tab" data-bs-toggle="pill" data-bs-target="#v-pills-emerge-contact" type="button" role="tab" aria-controls="v-pills-emerge-contact" aria-selected="false">Emergency Contact</button>
+
+		</div>
+		<div class="tab-content" id="v-pills-tabContent">
+		<!-- ============================== Passport Type =================================== -->
+		<div class="tab-pane fade show active" id="v-pills-ps-type" role="tabpanel" aria-labelledby="v-pills-ps-type-tab">
+			<button class="btn btn-primary" onclick="populateData()">Populate Previous Data</button>
+			<h2>Passport Type</h2>
+			<div class="container">
+				<form class="form" id="passport-type-form" data-step = 'step1'>
+					<div class="error-message bg-danger text-white"></div>
+					<div class="form-group my-4">
+						<h5>Select the Passport Type for your application!</h5>
+						<div class="form-check my-3">
+							<input class="form-check-input passport-type" type="radio" name="passport" id="ordinary-passport" value="ordinary">
+							<label class="form-check-label" for="ordinary-passport">
+								Ordinary Passport
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input passport-type" type="radio" name="passport" id="official-passport" value="official">
+							<label class="form-check-label" for="official-passport">
+								Official Passport
+							</label>
+						</div>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="official-passport-show">
+						<div class="form-group error my-4">
+							<label for="select-supporting-doc">Select available supporting document</label>
+							<select id="select-supporting-doc" class="form-select mb-3" onchange="myFunction()" aria-label=".form-select-md">
+								<option selected></option>
+								<option value="noc">NOC</option>
+								<option value="go">GO</option>
+							</select>
+							<small class="text-danger"></small>
+						</div>
+		
+						<div class="form-group my-4">
+							<h5>Is a payment required for the Official Passport?</h5>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="payment_req" id="payment-required-no" value="no">
+								<label class="form-check-label" for="payment-required-no">
+								No
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="payment_req" id="payment-required-yes" value="yes">
+								<label class="form-check-label" for="payment-required-yes">
+								Yes
+								</label>
+							</div>
+							<small class="text-danger"></small>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Save and continue</button>
+				</form>
+			</div>
+		</div>
+		
+		<!-- ============================== Personal Information Type =================================== -->
+		<div class="tab-pane fade" id="v-pills-ps-i" role="tabpanel" aria-labelledby="v-pills-ps-i-tab">
+			<h2>Personal Information</h2>
+			
+
+			<div class="container">
+			<form class="form mb-5" data-step="step2">
+				<h6>If you have any confusion about "Given name" and "Surname", Please click here for example.</h6>
+				<div class="form-group my-4">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="apply-for">
+						<label class="form-check-label" for="apply-for">
+						I apply for myself
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group col-md-2 my-4">
+					<label for="gender">Select gender</label>
+					<select id="gender" class="form-select mb-3" aria-label=".form-select-md">
+						<option selected></option>
+						<option value="male">MALE</option>
+						<option value="female">FEMALE</option>
+						<option value="other">OTHER</option>
+					</select>
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="full-name">Full name (as per previous passport or NID/BRC)</label>
+					<input id="full-name" class="form-control" type="text" aria-label="default input example">
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="given-name">Given name (as per previous passport or NID/BRC)</label>
+					<input id="given-name" class="form-control" type="text" aria-label="default input example">
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="surname">Surname (as per previous passport or NID/BRC)</label>
+					<input id="surname" class="form-control" type="text" aria-label="default input example">
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="profession">Select Profession</label>
+					<select id="profession" class="form-select mb-3" aria-label=".form-select-md">
+						<option value=""></option>
+						<option value="1">Dependant on Diplomat</option>
+						<option value="2">Government Service</option>
+					</select>
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="religion">Select Religion</label>
+					<select id="religion" class="form-select mb-3" aria-label=".form-select-md">
+						<option value=""></option>
+						<option value="1">Christianity</option>
+						<option value="2">Hinduism</option>
+						<option value="3">Islam</option>
+						<option value="4">Jainism</option>
+						<option value="4">Judaism</option>
+						<option value="4">Other</option>
+						<option value="4">Sikhism</option>
+					</select>
+					<small class="text-danger"></small>
+				</div>
+
+				<!-- Fetch needed -->
+				<div class="form-group col-md-5 my-4">
+					<label for="country-code">Select Country Code</label>
+					<select id="country-code" class="form-select mb-3" aria-label=".form-select-md" onchange="get_code_to_mobile()">
+						<option selected></option>
+					</select>
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="mobile-num">Mobile Number (Option)</label>
+					<input id="mobile-num" class="form-control" type="text" aria-label="default input example">
+					<small class="text-danger"></small>
+				</div>
+
+				<div class="form-check col-md-5 my-4">
+					<input class="form-check-input" type="checkbox" value="" id="sms" disabled>
+					<label class="form-check-label" for="sms">
+						Send SMS application status information also to this phone number (mobile numbers only)
+					</label>
+				</div>
+
+				<h6>Birth Data</h6>
+				<!-- Fetching needed -->
+				<div class="form-group col-md-12 my-4">
+					<label for="country-by-birth">Select country of birth</label>
+					<!-- <select id="country-by-birth" class="form-select mb-3" aria-label=".form-select-md" onchange="check_country()">
+					</select> -->
+					<select id="country-by-birth" class="js-selector form-control" name="states[]" multiple="multiple">
+						<option selected></option>
+					</select>
+					<small class="text-danger"></small>
+				</div>
+
+				<!-- Fetching needed -->
+				<div id="select-district" class="form-group col-md-5 my-4">
+					<label for="district-by-birth">Select district of birth</label>
+					<select id="district-by-birth" class="form-select mb-3" aria-label=".form-select-md">
+					</select>
+					<input id="dist" class="form-control" type="text" aria-label="default input example">
+					<small class="text-danger"></small>
+				</div>
+			
+				<div class="form-group col-md-5 my-4">
+					<label for="birth-date">Select date of birth</label>
+					<input id="birth-date" type="date" class="form-control datepicker">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-th"></span>
+					</div>
+					<small class="text-danger"></small>
+				</div>
+
+				<h6>Citizenship information</h6>
+
+				<div class="form-group col-md-5 my-4 mb-5">
+					<label for="citizenship">Select type of citizenship</label>
+					<select id="citizenship" class="form-select mb-3" aria-label=".form-select-md">
+						<option value=""></option>
+						<option value="1">By birth</option>
+						<option value="2">By descent</option>
+						<option value="3">migration</option>
+						<option value="4">naturalization</option>
+						<option value="5">by marriage</option>
+						<option value="6">other</option>
+					</select>
+					<small class="text-danger"></small>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Save and continue</button>
+			</form>
+			</div>
+		</div>
+
+		<!-- ============================== Address =================================== -->
+		<div class="tab-pane fade" id="v-pills-address" role="tabpanel" aria-labelledby="v-pills-address-tab">
+			<div class="container">
+			<div class="row">
+
+				<h2>Address</h2>
+				<form class="form mb-5" data-step="step3">
+					<div class="title-text">
+						<h6>Passport Type</h6>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-2 my-4">
+						<label for="district-address">Select district</label>
+						<select id="district-address" class="form-select" aria-label=".form-select-md">
+							<option selected></option>
+							<option value="rajshahi">Rajshahi</option>
+							<option value="dhaka">Dhaka</option>
+							<option value="chittagong">Chittagong</option>
+							<option value="barishal">Barishal</option>
+							<option value="sylhet">Sylhet</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-4 my-4">
+						<label for="city">City/Village/House</label>
+						<input id="city" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-4 my-4">
+						<label for="road">Road/Block/Sector (optional)</label>
+						<input id="road" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-4 my-4">
+						<label for="post-office">Select post office</label>
+						<input id="post-office" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-2 my-4">
+						<label for="post-code">Postal Code</label>
+						<input id="post-code" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-4 my-4">
+						<label for="police-station">Select police station</label>
+						<input id="police-station" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="col-md-8 title-text">
+						<h6>Present address</h6>
+						<h6>Present address is subjected to RPO and SB Police Check. The RPO will reject your application if it does not belong to their jurisdiction. Your payment for the passport may be void and is not reimbursed if the information is incorrect!</h6>
+					</div>
+
+					<div class="form-check my-4">
+						<input class="form-check-input" type="checkbox" id="check-present-address">
+						<label class="form-check-label" for="flexCheckDefault">
+							Present address is the same as Permanent
+						</label>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-2 my-4">
+						<label for="present-district-address">Select district</label>
+						<select id="present-district-address" class="form-select" aria-label=".form-select-md">
+							<option selected></option>
+							<option value="rajshahi">Rajshahi</option>
+							<option value="dhaka">Dhaka</option>
+							<option value="chittagong">Chittagong</option>
+							<option value="barishal">Barishal</option>
+							<option value="sylhet">Sylhet</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-4 my-4">
+						<label for="present-city">City/Village/House</label>
+						<input id="present-city" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-4 my-4">
+						<label for="present-road">Road/Block/Sector (optional)</label>
+						<input id="present-road" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-4 my-4">
+						<label for="present-post-office">Select post office</label>
+						<input id="present-post-office" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-2 my-4">
+						<label for="present-post-code">Postal Code</label>
+						<input id="present-post-code" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-4 my-4">
+						<label for="present-police-station">Select police station</label>
+						<input id="present-police-station" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="col-md-8 title-text">
+						<h6>Available Regional Passport Office and Bangladesh Mission</h6>
+					</div>
+
+					<div class="form-group mb-5">
+						<div class="form-check">
+						<input class="form-check-input" type="radio" name="passport-office" id="regional-passport" value="regional">
+						<label class="form-check-label" for="regional-passport">
+							Regional Passport office (RPO)
+						</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="passport-office" id="bd-mission-passport" value="bd-mission">
+							<label class="form-check-label" for="bd-mission-passport">
+							Bangladesh Mission
+							</label>
+						</div>
+						<small class="text-danger"></small>
+					</div>
+					<button type="submit" class="btn btn-primary">Save and continue</button>
+				</form>
+			</div>
+			</div>
+		</div>
+
+		<!-- ============================== ID Documents =================================== -->
+		<div class="tab-pane fade" id="v-pills-id-doc" role="tabpanel" aria-labelledby="v-pills-id-doc-tab">
+			<h2>ID Documents</h2>
+			<div class="passport mb-5">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 text-center">
+							<div class="passport-image">
+								<img src="images/passport.jpg" alt="">
+							</div>
+							<div class="form-check p-4">
+								<input class="form-check-input" type="radio" name="passport-img" id="mrp-passport" value="mrp-passport">
+								<label class="form-check-label" for="mrp-passport">
+									Yes, I have a Machine Readable Passport (MRP)
+								</label>
+							</div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="passport-image">
+								<img src="images/passport.jpg" alt="">
+							</div>
+							<div class="form-check p-4">
+								<input class="form-check-input" type="radio" name="passport-img" id="e-passport" value="e-passport">
+								<label class="form-check-label" for="e-passport">
+									Yes, I have an Electronic Passport (ePP)
+								</label>
+							</div>
+						</div>
+						<div class="col-md-4 text-center">
+							<div class="passport-image">
+								<img src="images/passport.jpg" alt="">						
+							</div>
+							<div class="form-check p-4">
+								<input class="form-check-input" type="radio" name="passport-img" id="no-passport" value="no-passport" checked>
+								<label class="form-check-label" for="no-passport">
+									No, I don't have any previous passport / handwritten passport
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<form class="form mb-5" data-step="step4">
+
+				<div id="passport-request">
+					<div class="title-text">
+						<h6>What is the reason for your passport request?</h6>
+					</div>
+					<div class="form-group col-md-5 my-4">
+						<label for="reissue-reason">Select reissue reason</label>
+						<select id="reissue-reason" class="form-select" aria-label="Default select example">
+							<option selected></option>
+							<option value="epassport">conversion to epassport</option>
+							<option value="expired">expired</option>
+							<option value="lost/stolen">lost/stolen</option>
+							<option value="data change">data change</option>
+							<option value="unusable">unusable</option>
+							<option value="other">other</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+	
+					<div class="form-group col-md-5 my-4">
+						<label for="previous-passport-number">Previous passport number</label>
+						<input id="previous-passport-number" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+	
+					<div class="form-group row my-3">
+						<div class="form-group col-md-5 my-4">
+							<label for="issue-date">Select date of issue</label>
+							<input id="issue-date" type="date" class="form-control datepicker">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+							<small class="text-danger"></small>
+						</div>
+						<div class="form-group col-md-5 my-4">
+							<label for="expire-date">Select date of expiration</label>
+							<input id="expire-date" type="date" class="form-control datepicker">
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-th"></span>
+							</div>
+							<small class="text-danger"></small>
+						</div>
+					</div>
+				</div>
+
+				<div class="title-text my-4">
+					<h6>Do you have passports of other countries?</h6>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="passport-other-country" id="dont-have" value="no" checked>
+					<label class="form-check-label" for="flexRadioDefault1">
+						No, I don't have
+					</label>
+				</div>
+				<div class="form-check mb-4">
+					<input class="form-check-input" type="radio" name="passport-other-country" id="have-passport" value="yes">
+					<label class="form-check-label" for="have-passport">
+						Yes, I have another passport
+					</label>
+				</div>
+
+				<div id="country-issue">
+					<div class="form-group col-md-5 my-4">
+						<label for="issuing-country-list">Select issuing country</label>
+						<select id="issuing-country-list" class="form-select" aria-label="Default select example">
+							
+						</select>
+						<small class="text-danger"></small>
+					</div>
+	
+					<div class="form-group col-md-5 my-4">
+						<label for="foreign-passport-number">Foreign Passport No.</label>
+						<input id="foreign-passport-number" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+				</div>
+
+				<div class="title-text">
+					<h6>Identification information</h6>
+				</div>
+
+				<div class="form-group col-md-5 my-4">
+					<label for="birth-register-number">Birth Register No.</label>
+					<input id="birth-register-number" class="form-control" type="text" aria-label="default input example">
+					<small class="text-danger"></small>
+				</div>
+				<button type="submit" class="btn btn-primary">Save and continue</button>
+			</form>
+		</div>
+
+		<!-- ============================== Parental Documents =================================== -->
+		<div class="tab-pane fade" id="v-pills-p-i" role="tabpanel" aria-labelledby="v-pills-p-i-tab">
+			<div class="container">
+			<div class="row">
+				<h2>Parental Documents</h2>
+				<form class="form mb-5" data-step="step5">
+				<!--======Fathers Information=========-->
+				<div class="fathers-information">
+					<div class="title-text">
+						<h6>Fathers Information</h6>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="father-unknown">
+							<label class="form-check-label" for="father-unknown">
+							Unknown
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="fathers-name">Father's name (as per NID/BRC)</label>
+						<input id="fathers-name" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>  
+					
+					<div class="form-group col-md-5 my-4">
+						<label for="fathers-profession">Select profession</label>
+						<select id="fathers-profession" class="form-select" aria-label="Default select example">
+							<option selected></option>
+							<option value="Architect">Architect</option>
+							<option value="Banker">Banker</option>
+							<option value="Barber">Barber</option>
+							<option value="IT Expert">IT Expert</option>
+							<option value="oftware Engineer">Software Engineer</option>
+							<option value="Government Service">Government Service</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch API needed -->
+					<div class="form-group col-md-5 my-4">
+						<label for="fathers-nationality">Nationality</label>
+						<select id="fathers-nationality" class="form-select" aria-label="Default select example">
+							<option selected></option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="fathers-nid">National ID No. (optional)</label>
+						<input id="fathers-nid" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div> 
+				</div>
+
+				<!--============Mothers Information=============-->
+				<div class="mothers-information">
+					<div class="title-text">
+						<h6>Mothers Information</h6>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="mother-unknown">
+							<label class="form-check-label" for="mother-unknown">
+							Unknown
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="mothers-name">Mother's name (as per NID/BRC)</label>
+						<input id="mothers-name" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>   
+					
+					<div class="form-group col-md-5 my-4">
+						<label for="mothers-profession">Select profession</label>
+						<select id="mothers-profession" class="form-select" aria-label="Default select example">
+							<option selected></option>
+							<option value="Architect">Architect</option>
+							<option value="Banker">Banker</option>
+							<option value="Barber">Barber</option>
+							<option value="IT Expert">IT Expert</option>
+							<option value="oftware Engineer">Software Engineer</option>
+							<option value="Government Service">Government Service</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch API needed -->
+					<div class="form-group col-md-5 my-4">
+						<label for="mothers-nationality">Nationality</label>
+						<select id="mothers-nationality" class="form-select" aria-label="Default select example">
+							<option value=""></option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="mothers-nid">National ID No. (optional)</label>
+						<input id="mothers-nid" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div> 
+				</div>
+
+				<!--============Guardians Information=============-->
+				<div class="guardians-information mb-4">
+					<div class="title-text">
+						<h6>Guardians Information</h6>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="guardian-unknown">
+							<label class="form-check-label" for="unknown">
+							Unknown
+							</label>
+						</div>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="guardians-name">Only applicable if you have a legal Guardian</label>
+						<label for="guardians-name">Guardian's name (as per NID/BRC)</label>
+						<input id="guardians-name" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>   
+					
+					<div class="form-group col-md-5 my-4">
+						<label for="guardians-profession">Select profession</label>
+						<select id="guardians-profession" class="form-select" aria-label="Default select example">
+							<option selected></option>
+							<option value="Architect">Architect</option>
+							<option value="Banker">Banker</option>
+							<option value="Barber">Barber</option>
+							<option value="IT Expert">IT Expert</option>
+							<option value="oftware Engineer">Software Engineer</option>
+							<option value="Government Service">Government Service</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch API needed -->
+					<div class="form-group col-md-5 my-4">
+						<label for="guardians-nationality">Nationality</label>
+						<select id="guardians-nationality" class="form-select" aria-label="Default select example">
+							<option value=""></option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="guardians-nid">National ID No. (optional)</label>
+						<input id="guardians-nid" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div> 
+				</div>
+				<button type="submit" class="btn btn-primary">Save and continue</button>
+
+				</form>
+			</div>
+			</div> 
+		</div>
+
+		<!-- ============================== Spouse Information =================================== -->
+		<div class="tab-pane fade" id="v-pills-s-i" role="tabpanel" aria-labelledby="v-pills-s-i-tab">
+			<div class="container">
+			<div class="row">
+				<h2>Spouse Information</h2>
+				<form class="form mb-4" data-step="step6">
+				<div class="spouse-information mb-5">
+					
+					<div class="form-group col-md-5 my-4">
+						<label for="marriage-status">Select marital status</label>
+						<select id="marriage-status" class="form-select" aria-label="Default select example">
+							<option selected></option>
+							<option value="single">Single</option>
+							<option value="married">Married</option>
+							<option value="divorced">Divorced</option>
+							<option value="widower">Widower</option>
+							<option value="widow">Widow</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+				</div>
+				<button type="submit" class="btn btn-primary">Save and continue</button>
+				</form>
+			</div>
+			</div>
+		</div>
+
+		<!-- ============================== Emergency Contact =================================== -->
+		<div class="tab-pane fade" id="v-pills-emerge-contact" role="tabpanel" aria-labelledby="v-pills-emerge-contact-tab">
+			<div class="container">
+			<div class="row">
+				<h2>Emergency Contact</h2>
+				<form class="form mb-4" data-step="step7">
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person">Select emergency contact relationship</label>
+						<select id="emergency-person" class="form-select" aria-label="Default select example">
+							<option value=""></option>
+							<option value="Aunt">Aunt</option>
+							<option value="Brother">Brother</option>
+							<option value="Brother-In-Law">Brother-In-Law</option>
+							<option value="Business Partner">Business Partner</option>
+							<option value="Collegue">Collegue</option>
+							<option value="Cousin">Cousin</option>
+							<option value="Daughter">Daughter</option>
+							<option value="Daughter-in-law">Daughter-in-law</option>
+							<option value="Employer">Employer</option>
+							<option value="Father">Father</option>
+							<option value="Mother">Mother</option>
+							<option value="Son">Son</option>
+							<option value="Uncle">Uncle</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="emerge-person-name">Name (as per NID/BRC)</label>
+						<input id="emerge-person-name" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-2 my-4">
+						<label for="emergency-person-district-address">Select district</label>
+						<select id="emergency-person-district-address" class="form-select" aria-label=".form-select-md">
+							<option selected></option>
+							<option value="rajshahi">Rajshahi</option>
+							<option value="dhaka">Dhaka</option>
+							<option value="chittagong">Chittagong</option>
+							<option value="barishal">Barishal</option>
+							<option value="sylhet">Sylhet</option>
+						</select>
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-city">City/Village/House</label>
+						<input id="emergency-person-city" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-road">Road/Block/Sector (optional)</label>
+						<input id="emergency-person-road" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-post-office">Select post office</label>
+						<input id="emergency-person-post-office" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-2 my-4">
+						<label for="emergency-person-post-code">Postal Code</label>
+						<input id="emergency-person-post-code" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-police-station">Select police station</label>
+						<input id="emergency-person-police-station" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-email">Email</label>
+						<input id="emergency-person-email" class="form-control" type="email" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<!-- Fetch needed -->
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-country-code">Select Country Code</label>
+						<input id="emergency-person-country-code" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+
+					<div class="form-group col-md-5 my-4">
+						<label for="emergency-person-mobile-num">Mobile Number (Option)
+						</label>
+						<input id="emergency-person-mobile-num" class="form-control" type="text" aria-label="default input example">
+						<small class="text-danger"></small>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="main.js?v=1"></script>
+	<script>
+		$(document).ready(function() {
+			$('.js-selector').select2();
+		});
+	</script>
+</body>
+</html>

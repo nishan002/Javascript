@@ -1,0 +1,50 @@
+select, option {
+    text-transform: uppercase;
+}
+
+span.select2.select2-container.select2-container--default.select2-container--above {
+    width: 200px !important;
+}
+
+/*============================== Passport Type Form ===============================*/
+.official-passport-show{
+    display: none;
+}
+
+/*============================== Passport Type Form ===============================*/
+
+#district-by-birth{
+    display: none;
+}
+
+/*============================== ID Documents ===============================*/
+
+#passport-request{
+    display: none;
+}
+
+#country-issue{
+    display: none;
+}
+
+.passport-image img {
+    height: 50px;
+    width: 50px;
+}
+
+.col-md-4.text-center {
+    border: 2px solid #ddd;
+    margin: 5px;
+    width: 245px;
+    height: 260px;
+}
+
+.passport-image {
+    padding: 35px;
+}
+
+.passport-image img {
+    height: 80px;
+    width: 90px;
+}
+

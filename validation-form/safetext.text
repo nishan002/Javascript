@@ -1,0 +1,43 @@
+ <h2>Passport Type</h2>
+            <form>
+                <div class="form-group my-4">
+                    <h5>Select the Passport Type for your application!</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                        Ordinary Passport
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                        Official Passport
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group my-4">
+                  <label>Select available supporting document</label>
+                  <select id="select-supporting-doc" class="form-control">
+                    <option>NOC</option>
+                    <option>GO</option>
+                  </select>
+                </div>
+
+                <div class="form-group my-4">
+                  <h5>Is a payment required for the Official Passport?</h5>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment-required-no" id="payment-required-no" value="option1">
+                    <label class="form-check-label" for="payment-required-no">
+                      No
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="payment-required-yes" id="payment-required-yes" value="option1">
+                    <label class="form-check-label" for="payment-required-yes">
+                      Yes
+                    </label>
+                  </div>
+                </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
